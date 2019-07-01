@@ -1,0 +1,14 @@
+[Unit]
+Description=minecraft-server
+
+[Service]
+WorkingDirectory=/srv/minecraft-server
+User=minecraft
+Group=minecraft
+Type=forking
+Restart=on-failure
+RestartSec=20 5
+ExecStart=/usr/bin/screen -h 2048 -dmS minecraft /usr/bin/java -Xms1536M -Xmx1536M -jar minecraft_server.jar nogui
+
+[Install]
+WantedBy=multi-user.target
